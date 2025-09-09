@@ -1,3 +1,4 @@
+- #-- In Production --#
 # Store Rating App
 
 A modern full-stack web application that enables users to discover and rate local stores. Built with React.js for a responsive frontend, Express.js backend for robust API services, and PostgreSQL for reliable data storage.
