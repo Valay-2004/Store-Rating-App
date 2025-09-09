@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ratingAPI } from '../services/api';
 import RatingStars from '../components/common/RatingStars';
+import './MyRatings.css';
 
 const MyRatings = () => {
   const [ratings, setRatings] = useState([]);
@@ -15,7 +16,7 @@ const MyRatings = () => {
     try {
       setLoading(true);
       const response = await ratingAPI.getUserRatings();
-      setRatings(response.data);
+      setRatings(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Failed to load ratings:', error);
       setError('Failed to load your ratings. Please try again later.');

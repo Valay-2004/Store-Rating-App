@@ -1,0 +1,43 @@
+/* Profile Information Section */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  text-align: left;         /* force left alignment */
+  align-items: flex-start;  /* prevent centering inside card */
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item label {
+  font-weight: 600;
+  color: #444;
+  width: 120px;   /* fixed width so values align nicely */
+}
+
+.info-item span {
+  color: #2c3e50;
+  word-break: break-word;
+}
+
+/* Role badge */
+.role-badge {
+  display: inline-block;   /* only as wide as its content */
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;     /* prevent wrapping */
+}

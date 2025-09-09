@@ -32,6 +32,11 @@ function App() {
               <Route index element={<Navigate to="/dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="stores" element={<StoreList />} />
+              <Route path="my-ratings" element={
+                <ProtectedRoute requiredRoles={['user']}>
+                  <MyRatings />
+                </ProtectedRoute>
+              } />
               <Route path="users" element={
                 <ProtectedRoute requiredRoles={['admin']}>
                   <UserManagement />
