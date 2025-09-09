@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import StoreList from './pages/StoreList';
 import UserManagement from './pages/UserManagement';
 import StoreManagement from './pages/StoreManagement';
+import MyRatings from './pages/MyRatings';
 import './App.css';
 import './styles/theme.css';
 

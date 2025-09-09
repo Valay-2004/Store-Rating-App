@@ -18,7 +18,15 @@ const StoreList = () => {
       setLoading(true);
       const response = await storeAPI.getAllStores();
       console.log("📦 storeAPI response:", response.data);
-      setStores(response.data.stores);
+      const { stores } = response.data;
+      // Map through stores to ensure proper data structure
+      const formattedStores = stores.map(store => ({
+        ...store,
+        average_rating: store.average_rating || 0,
+        total_ratings: store.total_ratings || 0,
+        user_rating: store.user_rating || null
+      }));
+      setStores(formattedStores);
     } catch (error) {
       console.error('Failed to load stores:', error);
       setError('Failed to load stores. Please try again later.');
@@ -30,7 +38,21 @@ const StoreList = () => {
   const handleRating = async (storeId, rating) => {
     try {
       await ratingAPI.rateStore(storeId, rating);
-      await loadStores(); // Reload stores to get updated ratings
+      
+      // Get the updated store data to reflect new rating
+      const storeResponse = await storeAPI.getStoreById(storeId);
+      
+      // Update the stores state with the new rating
+      setStores(prevStores => prevStores.map(store => 
+        store.id === storeId 
+          ? {
+              ...store,
+              average_rating: storeResponse.data.store.average_rating,
+              total_ratings: storeResponse.data.store.total_ratings,
+              user_rating: rating
+            }
+          : store
+      ));
     } catch (error) {
       console.error('Failed to submit rating:', error);
       setError('Failed to submit rating. Please try again later.');
@@ -102,12 +124,12 @@ const StoreList = () => {
 
                 <div className="rating-input">
                   <RatingStars
-                    rating={0}
+                    rating={store.user_rating || 0}
                     size="large"
                     interactive={true}
-                    onRatingChange={(rating) =>
-                      handleRating(store.id, rating)
-                    }
+                    onRatingChange={(rating) => {
+                      handleRating(store.id, rating);
+                    }}
                   />
                 </div>
               </div>

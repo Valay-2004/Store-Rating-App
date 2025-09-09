@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './RatingStars.css';
 
 const RatingStars = ({ 
   rating = 0, 
@@ -7,20 +8,36 @@ const RatingStars = ({
   interactive = false,
   onRatingChange = null 
 }) => {
-  // Ensure rating is a number
+  const [hoverRating, setHoverRating] = useState(0);
   const numericRating = parseFloat(rating) || 0;
+
   const handleStarClick = (starValue) => {
-    if (interactive && onRatingChange) {
+    if (interactive && onRatingChange && starValue !== numericRating) {
       onRatingChange(starValue);
+    }
+  };
+
+  const handleMouseEnter = (starValue) => {
+    if (interactive) {
+      setHoverRating(starValue);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (interactive) {
+      setHoverRating(0);
     }
   };
 
   const getStarClass = (starValue) => {
     let baseClass = `star ${size}`;
     
-    if (starValue <= numericRating) {
+    // Use hover rating if hovering, otherwise use actual rating
+    const currentRating = interactive && hoverRating ? hoverRating : numericRating;
+    
+    if (starValue <= currentRating) {
       baseClass += ' filled';
-    } else if (starValue - 0.5 <= numericRating) {
+    } else if (starValue - 0.5 <= currentRating) {
       baseClass += ' half-filled';
     } else {
       baseClass += ' empty';
@@ -47,16 +64,18 @@ const RatingStars = ({
                 handleStarClick(starValue);
               }
             }}
+            onMouseEnter={() => handleMouseEnter(starValue)}
+            onMouseLeave={handleMouseLeave}
             tabIndex={interactive ? 0 : -1}
             role={interactive ? 'button' : 'img'}
-            aria-label={`${starValue} star${starValue > 1 ? 's' : ''}`}
+            aria-label={`Rate ${starValue} star${starValue > 1 ? 's' : ''}`}
           >
             ★
           </span>
         );
       })}
       {numericRating > 0 && (
-        <span className="rating-text">
+        <span className="rating-text" aria-live="polite">
           ({numericRating.toFixed(1)})
         </span>
       )}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import './Navbar.css';
 
 const Navbar = () => {
   const { user, logout, hasRole } = useAuth();
@@ -46,10 +47,26 @@ const Navbar = () => {
           )}
           
           <div className="nav-user">
-            <span className="user-name">{user?.name}</span>
-            <button onClick={handleLogout} className="btn btn-secondary btn-sm">
-              Logout
-            </button>
+            <div className="user-profile">
+              <div className="user-avatar">
+                {user?.name ? user.name.charAt(0).toUpperCase() : '?'}
+              </div>
+              <div className="user-info">
+                <span className="user-name">{user?.name}</span>
+                <span className="user-role">{user?.role?.replace('_', ' ').toUpperCase()}</span>
+              </div>
+            </div>
+            <div className="user-actions">
+              {hasRole('user') && (
+                <Link to="/my-ratings" 
+                  className={`nav-link ${isActive('/my-ratings') ? 'active' : ''}`}>
+                  My Ratings
+                </Link>
+              )}
+              <button onClick={handleLogout} className="btn btn-secondary btn-sm">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
