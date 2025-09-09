@@ -1,11 +1,47 @@
-/* Profile Information Section */
+.dashboard-header h1 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.dashboard-header p {
+  color: #666;
+  margin: 0.5rem 0 0 0;
+}
+
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* User Info Styling */
 .user-info {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-top: 1rem;
-  text-align: left;         /* force left alignment */
-  align-items: flex-start;  /* prevent centering inside card */
+  text-align: left;
+  align-items: flex-start;
 }
 
 .info-item {
@@ -24,7 +60,7 @@
 .info-item label {
   font-weight: 600;
   color: #444;
-  width: 120px;   /* fixed width so values align nicely */
+  width: 120px;
 }
 
 .info-item span {
@@ -34,10 +70,124 @@
 
 /* Role badge */
 .role-badge {
-  display: inline-block;   /* only as wide as its content */
+  display: inline-block;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 500;
-  white-space: nowrap;     /* prevent wrapping */
+  white-space: nowrap;
+}
+
+.role-admin {
+  background: #dc3545;
+  color: white;
+}
+
+.role-user {
+  background: #28a745;
+  color: white;
+}
+
+.role-store_owner {
+  background: #007bff;
+  color: white;
+}
+
+/* Store Dashboard */
+.store-dashboard {
+  margin-top: 0; /* Removed extra spacing */
+}
+
+.store-info {
+  margin-bottom: 1rem;
+}
+
+.store-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.store-address {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.store-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Store Ratings List */
+.store-ratings {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.store-ratings h4 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.ratings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rating-item {
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.rating-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.rating-date {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
 }

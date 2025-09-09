@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ratingAPI } from '../services/api';
 import RatingStars from '../components/common/RatingStars';
-import './MyRatings.css';
 
 const MyRatings = () => {
   const [ratings, setRatings] = useState([]);

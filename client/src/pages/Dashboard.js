@@ -80,7 +80,7 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         <p>Welcome back, {user?.name}</p>
       </div>
-
+<br></br>
       <div className="dashboard-content">
         {/* User Info Card */}
         <div className="card">
