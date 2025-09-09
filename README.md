@@ -107,7 +107,7 @@ cp .env.example .env
 4. Configure your environment variables:
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
-REACT_APP_NAME="Store Rating App"
+REACT_APP_NAME="<NAME>"
 ```
 
 5. Start the development server:
